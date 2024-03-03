@@ -1,6 +1,8 @@
+import { Card } from '../Utils/Card/Card'
+import { MealItem } from './MealItem/MealItem'
 import classes from './MealsAvailable.module.css'
 
-const MEALS_MOCK = [
+export const MEALS_MOCK = [
   {
     id: 'm1',
     name: 'Sushi',
@@ -29,10 +31,17 @@ const MEALS_MOCK = [
 
 export const MealsAvailable = () => (
   <section className={classes.meals}>
-    <ul>
-      {MEALS_MOCK.map((meal) => (
-        <li key={meal.id}>{meal.name}</li>
-      ))}
-    </ul>
+    <Card>
+      <ul>
+        {MEALS_MOCK.map((meal) => (
+          <MealItem
+            key={meal.id}
+            name={meal.name}
+            description={meal.description}
+            price={meal.price}
+          />
+        ))}
+      </ul>
+    </Card>
   </section>
 )
