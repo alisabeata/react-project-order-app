@@ -7,11 +7,24 @@ import classes from './Cart.module.css'
 export const Cart = ({ onClose }) => {
   const cartCtx = useContext(CartContext)
 
+  const cartItemRemoveHandler = (id) => {
+    cartCtx.removeItem(id)
+  }
+
+  const cartItemAddHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 })
+  }
+
   return (
     <Modal onClose={onClose}>
       <ul className={classes['cart-items']}>
         {cartCtx.items.map((item) => (
-          <CartItem key={item.id} {...item}>
+          <CartItem
+            key={item.id}
+            onRemove={() => cartItemRemoveHandler(item.id)}
+            onAdd={() => cartItemAddHandler(item)}
+            {...item}
+          >
             {item.name}
           </CartItem>
         ))}

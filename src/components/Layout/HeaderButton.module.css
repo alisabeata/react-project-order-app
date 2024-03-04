@@ -32,7 +32,7 @@
   background-color: #14a879;
 }
 
-.bump {
+.bump .badge {
   animation: bump 300ms ease-out;
 }
 
